@@ -1,6 +1,6 @@
-import {revealCards,observeSections} from './motion.js?v=storybook-4';
-import {createGallery} from './gallery.js?v=storybook-4';
-import {STATES,safeImage,safeCheckout,canBuy,priceLabel,validateCatalog} from './catalog.js?v=storybook-4';
+import {revealCards,observeSections} from './motion.js?v=storybook-5';
+import {createGallery} from './gallery.js?v=storybook-5';
+import {STATES,safeImage,safeCheckout,canBuy,priceLabel,validateCatalog} from './catalog.js?v=storybook-5';
 const catalog=document.querySelector('#catalog');
 const detail=document.querySelector('#product');
 let data,filter='all';
@@ -35,7 +35,7 @@ function renderDetail(){
 }
 async function load(){
  const target=catalog||detail;if(!target)return;target.setAttribute('aria-busy','true');
- try{const response=await fetch(new URL('data/products.json',import.meta.url),{signal:AbortSignal.timeout(10000),cache:'no-cache'});if(!response.ok)throw new Error('Catalog unavailable');data=validateCatalog(await response.json());catalog?renderCatalog():renderDetail();if(catalog)revealCards(catalog);}
+ try{const response=await fetch(new URL('data/products.json',import.meta.url),{signal:AbortSignal.timeout(10000),cache:'no-cache'});if(!response.ok)throw new Error('Catalog unavailable');data=validateCatalog(await response.json());for(const button of document.querySelectorAll('[data-filter]'))button.disabled=false;catalog?renderCatalog():renderDetail();if(catalog)revealCards(catalog);}
  catch{target.replaceChildren();const message=el('div','state-message');message.append(el('h2','','A little pause'),el('p','','We couldn’t load the collection. Please try again.'));const retry=el('button','button','Try again');retry.type='button';retry.addEventListener('click',load);message.append(retry);target.append(message);}
  finally{target.setAttribute('aria-busy','false');}
 }

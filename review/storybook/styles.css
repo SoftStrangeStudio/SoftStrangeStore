@@ -32,3 +32,5 @@ html{scroll-behavior:smooth;scroll-padding-top:24px}body{background:var(--paper)
 /* Narrow screens retain a two-line hero and single-line navigation. */
 @media(max-width:430px){.hero h1{font-size:clamp(2.15rem,11.5vw,3.1rem)}.site-header nav a{white-space:nowrap}}
 @media(max-width:360px){.brand{font-size:1.16rem;gap:6px}.brand img{width:22px;height:22px}.site-header{gap:12px}.site-header nav{gap:12px;font-size:.7rem}.hero{padding-top:34px}.hero .eyebrow{letter-spacing:.1em}.filters{gap:3px}.filters button{padding-inline:10px;font-size:.75rem}}
+
+.filters button:disabled{opacity:.55;cursor:wait}
