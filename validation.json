@@ -2,7 +2,7 @@
   "status": "partial",
   "upstreamCommit": "89109bf87907a5fedcf4d215c5ab2ec664cf01cc",
   "implementation": "initial local baseline",
-  "githubChanges": false,
+  "githubChanges": true,
   "deploymentPerformed": false,
   "livePaymentsEnabled": false,
   "browserReview": {

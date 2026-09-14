@@ -2,7 +2,7 @@
 
 ## Outcome: partial, browser review blocked
 
-The initial storefront was built against the cloned repository. The supported browser rejected `http://localhost:4173/SoftStrangeStore/` with `net::ERR_BLOCKED_BY_CLIENT`. The documented troubleshooting guidance exposed no supported resolution for this block. No alternative browser control, access workaround, hosted deployment, or account change was attempted.
+The initial storefront was built against the cloned repository and published to `SoftStrangeStudio/SoftStrangeStore` on `main`. The supported browser rejected `http://localhost:4173/SoftStrangeStore/` with `net::ERR_BLOCKED_BY_CLIENT`. The documented troubleshooting guidance exposed no supported resolution for this block. No alternative browser control or access workaround was attempted.
 
 This is a baseline implementation, **not ten or fifty completed improvement loops**. No milestone preview has been fabricated. The generated concept image shown in chat is an asset, not a screenshot of the functioning site.
 

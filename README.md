@@ -4,7 +4,7 @@ A cozy static concept storefront for SoftStrange Studio. Sandbox implementation 
 
 ## Status
 
-Implemented locally only. Nothing committed, pushed, published, or connected to live payments. All products are unapproved sample concepts. Images are AI-generated concept artwork, not Angel’s inventory.
+Published to the `main` branch in commit `483a8b8`. GitHub Pages deployment status still needs verification. The site is not connected to live payments. All products are unapproved sample concepts. Images are AI-generated concept artwork, not Angel’s inventory.
 
 Source tests pass. Browser validation is **blocked**: the supported browser rejected the localhost preview with `net::ERR_BLOCKED_BY_CLIENT`. No desktop/mobile screenshots, visual acceptance, or 50-loop completion are claimed. See `REVIEW.md`.
 
