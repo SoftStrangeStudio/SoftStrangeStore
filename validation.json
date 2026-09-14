@@ -1,22 +1,42 @@
 {
-  "status": "partial",
-  "upstreamCommit": "89109bf87907a5fedcf4d215c5ab2ec664cf01cc",
-  "implementation": "initial local baseline",
+  "status": "candidate_verified",
+  "publicUrl": "https://softstrangestudio.github.io/SoftStrangeStore/",
+  "startingRevision": "6895c9561807d0482f1d218550a8cef0de4db18b",
+  "reviewedCandidate": "6233f984085f252a8eab6c521e23ebfcab98d939",
   "githubChanges": true,
-  "deploymentPerformed": false,
   "livePaymentsEnabled": false,
   "browserReview": {
-    "status": "blocked",
-    "url": "http://localhost:4173/SoftStrangeStore/",
-    "observedError": "net::ERR_BLOCKED_BY_CLIENT",
-    "screenshotsCaptured": 0,
-    "completedVisualImprovementLoops": 0,
-    "requestedLoops": 50,
-    "requestedPreviewMilestones": [10,20,30,40,50]
+    "route": "Existing authorized GitHub Pages review path; root promotion follows review",
+    "attempts": 5,
+    "accepted": [
+      1,
+      2,
+      4,
+      5
+    ],
+    "revised": [
+      3
+    ],
+    "evidence": "reviews/storybook/run.json",
+    "mobile": "CSS viewport screenshots at 320 and 390, not device emulation",
+    "verifiedInteractions": [
+      "filters and reset",
+      "thumbnail gallery",
+      "zoom",
+      "Escape and focus return",
+      "expandable information",
+      "motion-off mode"
+    ],
+    "notVerified": [
+      "physical-device touch",
+      "native OS preference switching",
+      "cross-browser coverage",
+      "live checkout"
+    ]
   },
   "automatedChecks": {
-    "command": "npm test",
-    "report": "Run npm test for reproducible source and local HTTP checks. These are not visual or live payment tests."
+    "command": "node --test tests/*.test.mjs",
+    "passed": 15
   },
-  "approvalNeeded": "A supported browser-accessible preview environment; do not publish or modify account settings without permission."
+  "rootDeployment": "pending promotion"
 }

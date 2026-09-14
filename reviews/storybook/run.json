@@ -1,0 +1,160 @@
+{
+  "run": "storybook-2026-09-14",
+  "target": "SoftStrangeStudio/SoftStrangeStore",
+  "authority": "User authorized images, visual and interaction upgrade, uploads and main publication",
+  "goal": "Minimal cozy storefront, better fonts, transparent illustrated framing and intentional interactions",
+  "startingRevision": "6895c9561807d0482f1d218550a8cef0de4db18b",
+  "maximumAttempts": 5,
+  "attempts": [
+    {
+      "id": 1,
+      "incumbent": "6895c9561807d0482f1d218550a8cef0de4db18b",
+      "candidate": "583c15d010504e1e2e996541b802c0597074de93:review/storybook",
+      "objective": "Coherent minimal visual system",
+      "evidence": [
+        "pass-1-desktop.webp",
+        "pass-1-mobile.webp"
+      ],
+      "observations": [
+        "Self-hosted fonts and all images loaded on desktop",
+        "Botanicals transparent on paper",
+        "Consistent paper frames",
+        "390px DOM has no horizontal overflow"
+      ],
+      "regressions": [],
+      "limitations": [
+        "Mobile capture preceded hero load; later DOM confirmed loaded. Recapture timed out and bounded retry also failed. No complete mobile-image screenshot claimed."
+      ],
+      "gate": "14/14 tests",
+      "decision": "accept desktop visual improvement; retain mobile capture limitation",
+      "next": "Product gallery and zoom"
+    },
+    {
+      "id": 2,
+      "incumbent": "583c15d010504e1e2e996541b802c0597074de93:review/storybook",
+      "candidate": "bd9feb31fa50e4a5dec321f291285c8dbf940bb0:review/storybook",
+      "objective": "Useful product exploration",
+      "evidence": [
+        "pass-2-product.webp",
+        "pass-2-mobile-recovery.webp"
+      ],
+      "observations": [
+        "Thumbnail selection shows original group scene",
+        "Zoom toggles pressed state",
+        "ArrowLeft changes view",
+        "Escape closes dialog and returns focus to gallery trigger",
+        "About this piece expands",
+        "390px product has no horizontal overflow"
+      ],
+      "regressions": [],
+      "gate": "15/15 tests; live browser interaction checks passed",
+      "decision": "accept",
+      "next": "Finite coordinated motion and filter transitions",
+      "captureNote": "New-tab capture timed out. Recovery on existing working tab succeeded. Mobile evidence is a lower-page viewport, not a full-device audit."
+    },
+    {
+      "id": 3,
+      "incumbent": "bd9feb31fa50e4a5dec321f291285c8dbf940bb0:review/storybook",
+      "candidate": "4172b053f45b3642345199248c2680d70a5b4852:review/storybook",
+      "objective": "Finite coordinated motion",
+      "evidence": [
+        "pass-3-narrow.webp",
+        "pass-3-narrow-top.webp"
+      ],
+      "observations": [
+        "Motion-off class set from review control",
+        "Filtering and empty-state reset work in motion-off mode; reset regains focus",
+        "320px screenshot shows four-line hero and wrapping navigation"
+      ],
+      "uncertainties": [
+        "Motion-enabled iframe actions sometimes timed out; cannot distinguish compositor behavior from review-tool timeout. No app error found; browser extension logs report metadata failures."
+      ],
+      "decision": "revise; preserve pass 2 as accepted incumbent",
+      "next": "Keep finite entrance primitives but replace native page transition with direct render and small item animations; fix observed narrow typography",
+      "gate": "15/15 source checks",
+      "salvageForNext": [
+        "CSS finite entrances",
+        "Reduced-motion controller",
+        "Gallery fade controller"
+      ],
+      "provenance": "Pass 4 is pass 2 gallery/design plus retained motion primitives from pass 3 and bounded responsive fixes."
+    },
+    {
+      "id": 4,
+      "incumbent": "bd9feb31fa50e4a5dec321f291285c8dbf940bb0:review/storybook",
+      "candidate": "54eed3cfa0aa40e720c4a05368006d4921f029af:review/storybook",
+      "captureRevision": "1a7dc5307f66976ba1bed5f94e2d4b354e7c944c",
+      "objective": "Narrow layout and direct lightweight interaction",
+      "evidence": [
+        "pass-4-320-verified.webp"
+      ],
+      "observations": [
+        "320px hero now uses two lines",
+        "Navigation labels stay on one line",
+        "Direct rendered filter returns 0 then 3 concepts",
+        "Empty-state reset restores focus to All little things",
+        "Stylesheet v4 verified in DOM and deployed bytes matched local SHA256"
+      ],
+      "regressions": [],
+      "decision": "accept",
+      "gate": "15/15 tests and direct browser state/focus checks",
+      "captureNote": "pass-4-320.webp was stale v3 HTML and is retained as invalid evidence. The pinned harness corrected the capture; this was not an additional design pass.",
+      "next": "Block first-load filter clicks until catalog validation completes"
+    },
+    {
+      "id": 5,
+      "incumbent": "54eed3cfa0aa40e720c4a05368006d4921f029af:review/storybook",
+      "candidate": "6233f984085f252a8eab6c521e23ebfcab98d939:review/storybook",
+      "objective": "Prevent first-load filter clicks from being ignored",
+      "evidence": [
+        "final-desktop-full.webp",
+        "final-mobile.webp",
+        "final-mobile-gallery.webp"
+      ],
+      "observations": [
+        "Initial HTML has disabled filter controls",
+        "Current rendered v5 enables controls after valid catalog load",
+        "Mobile filtering returns 0 then 3 concepts",
+        "Gallery opens in the narrow frame; zoom toggles and Escape closes",
+        "Motion-off root class is present; Together thumbnail still works",
+        "Purchasing button stays disabled"
+      ],
+      "gate": "15 source tests plus actual browser checks",
+      "regressions": [],
+      "decision": "accept",
+      "next": "Promote identical candidate files to root and verify deployment"
+    }
+  ],
+  "protected": [
+    "JSON catalog",
+    "Purchasing disabled in preview",
+    "Concept-art disclosure",
+    "Static GitHub Pages",
+    "Keyboard and reduced-motion support"
+  ],
+  "evidenceProfile": "Actual Chrome rendering at public authorized review path; local URLs blocked by browser policy. Mobile uses CSS iframe viewport, not physical-device emulation.",
+  "backlog": [
+    "Visual hierarchy and paper frames",
+    "Gallery and zoom",
+    "Coordinated motion",
+    "Responsive and accessibility defects"
+  ],
+  "unsupported": [
+    "Actual device touch testing",
+    "Live checkout",
+    "Real product photography"
+  ],
+  "attemptsSpent": 5,
+  "acceptedAttempts": [
+    1,
+    2,
+    4,
+    5
+  ],
+  "revisedAttempts": [
+    3
+  ],
+  "bestRevision": "6233f984085f252a8eab6c521e23ebfcab98d939:review/storybook",
+  "status": "candidate_verified",
+  "remainingAttempts": 0
+}

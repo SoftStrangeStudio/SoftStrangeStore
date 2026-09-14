@@ -1,32 +1,37 @@
-# Sandbox implementation checkpoint
+# Storybook storefront review
 
-## Outcome: partial, browser review blocked
+This upgrade starts from public main revision `6895c9561807d0482f1d218550a8cef0de4db18b`. The user authorized the visual and interaction upgrade, generated artwork, GitHub uploads and publication to main.
 
-The initial storefront was built against the cloned repository and published to `SoftStrangeStudio/SoftStrangeStore` on `main`. The supported browser rejected `http://localhost:4173/SoftStrangeStore/` with `net::ERR_BLOCKED_BY_CLIENT`. The documented troubleshooting guidance exposed no supported resolution for this block. No alternative browser control or access workaround was attempted.
+## Review method
 
-This is a baseline implementation, **not ten or fifty completed improvement loops**. No milestone preview has been fabricated. The generated concept image shown in chat is an asset, not a screenshot of the functioning site.
+The local browser URL policy prevented local page review. The candidate was therefore staged on the **same authorized GitHub Pages site**, under `review/storybook/`, while the existing root storefront remained in place. All visual evidence is actual Chrome rendering. No generated website mockup substitutes for a screenshot.
+
+The new `pass-it` run has a maximum of five attempted revisions. The evidence ledger distinguishes accepted work, rejected/uncertain work and screenshot retries. This is not a claim to have completed the historical request for 50 loops or 500 improvements.
 
 ## Implemented
 
-1. Plain HTML/CSS/JavaScript structure with relative project-path asset URLs.
-2. Cozy responsive layout, semantic landmarks, navigation, skip links, and focus treatment.
-3. Local JSON fixtures with validation and duplicate-ID/slug rejection.
-4. Catalog filtering, counts, empty state, fetch timeout, and retry action.
-5. Product detail lookup and missing-product state.
-6. Explicit concept/preview notices and disabled checkout for all supplied fixtures.
-7. Strict image-path and Stripe-link allowlists.
-8. Optimized WebP hero sizes and card crops; fixed dimensions, lazy decoding, and soft image reveal.
-9. Preview shipping/privacy information with no invented commercial promises.
-10. Local server, responsive-frame harness, source tests, and authoring/handoff documentation.
+- Minimal hero copy and simplified public navigation and notices.
+- Self-hosted Fraunces headings and DM Sans body text with included OFL licenses.
+- Two generated transparent botanical accents, SVG flower mark, responsive CSS paper and double-outline frames.
+- Consistent card frames with an optional validated per-image composition adjustment.
+- Native product gallery: thumbnails, original group scene, zoom, Escape, focus return, arrow-key navigation and touch-swipe code.
+- Expandable product information with honest concept status.
+- Finite entrances and staggered collection updates. No scroll hijacking, endless decoration loops, animation framework or application migration.
+- Reduced motion follows the operating-system preference. The review harness can additionally request `?motion=off`, which exercises the same application suppression path without adding technical controls to the shop UI.
 
-## Review route and limitations
+## Evidence and limits
 
-`pass-it` requires incumbent/candidate comparison with evidence; `review-it` routes this DOM site to browser capture, rather than a substitute 3D or generated mockup. The browser capture blocker prevents accepting visual iterations. The incumbent remains the initial unreviewed local implementation.
+`reviews/storybook/run.json` is the ordered evidence index, including exact candidate revisions and observed results. Image files are actual screenshots or lossily compressed/cropped presentation derivatives of those screenshots. Crop-only derivatives do not alter page content. Raw working captures are retained in the working directory.
 
-The responsive harness offers widths 320, 375, 390, 430, 768, 1024, 1440, and 1920. These options are implemented, not browser-verified. No Lighthouse score, accessibility certification, real-device result, checkout success, or deployed availability is claimed.
+The mobile harness checks CSS viewport layout, with browser scrollbars consuming some width. It does not emulate a physical device or prove native touch behavior. Native OS preference switching, physical-device swipe/pinch behavior and cross-browser coverage are not certified by this review. Browser extension metadata errors are distinct from application errors.
 
-## Resume contract
+Some screenshot/evaluation requests timed out. Successful captures, relevant DOM state, and interaction results are named individually; unavailable captures are not claimed. Full-page native View Transitions were removed in favor of immediate DOM updates and small item animations after ambiguous motion-enabled iframe timeouts.
 
-Obtain an approved browser-accessible preview environment without changing GitHub or publishing anything absent separate permission. Then capture baseline shop and product views. Run the requested 50-loop sequence with ten classified review items per loop. Record genuine fixes separately from verified-existing behavior and blocked checks. Capture previews after loops 10, 20, 30, 40, and 50. Do not call repeated checks 500 unique improvements.
+Purchasing remains disabled. No real inventory, prices, merchant configuration, shipment workflow or actual product photographs were invented. The original studio scene supplies the gallery's second view; it is not presented as another photograph of a physical product.
 
-For each loop retain: objective, incumbent source hash, candidate source hash, actual edits, tests, desktop/mobile captures, observed improvements/regressions, accept-or-retain decision, and next concern. The image-generation skill supplied only concept assets; actual page rendering remains required for acceptance.
+## Validation
+
+- Source tests cover preview purchase blocking, catalog/gallery validation, safe image paths, exact checkout host, resource existence, source/image budgets and local HTTP paths.
+- Browser checks cover collection selection and empty-state reset, thumbnail changes, zoom, previous/next view, Escape, focus restoration and expandable information.
+- Transparent artwork was inspected against cream, sage and dark backgrounds without a chroma key.
+- Exact final deployment status is recorded in `validation.json` after the final smoke check.
