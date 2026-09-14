@@ -1,0 +1,22 @@
+{
+  "status": "partial",
+  "upstreamCommit": "89109bf87907a5fedcf4d215c5ab2ec664cf01cc",
+  "implementation": "initial local baseline",
+  "githubChanges": false,
+  "deploymentPerformed": false,
+  "livePaymentsEnabled": false,
+  "browserReview": {
+    "status": "blocked",
+    "url": "http://localhost:4173/SoftStrangeStore/",
+    "observedError": "net::ERR_BLOCKED_BY_CLIENT",
+    "screenshotsCaptured": 0,
+    "completedVisualImprovementLoops": 0,
+    "requestedLoops": 50,
+    "requestedPreviewMilestones": [10,20,30,40,50]
+  },
+  "automatedChecks": {
+    "command": "npm test",
+    "report": "Run npm test for reproducible source and local HTTP checks. These are not visual or live payment tests."
+  },
+  "approvalNeeded": "A supported browser-accessible preview environment; do not publish or modify account settings without permission."
+}

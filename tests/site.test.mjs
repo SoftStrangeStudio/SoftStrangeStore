@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile,stat} from 'node:fs/promises';
+import {gzipSync} from 'node:zlib';
+const root=new URL('../',import.meta.url);
+const pages=['index.html','product.html','shipping.html','policies.html','404.html'];
+test('all HTML pages have responsive and preview metadata',async()=>{for(const page of pages){const html=await readFile(new URL(page,root),'utf8');assert.match(html,/<html lang="en">/);assert.match(html,/name="viewport"/);assert.match(html,/noindex, nofollow/);assert.match(html,/<title>[^<]+<\/title>/);assert.doesNotMatch(html,/<form\b|pk_live_|sk_live_|sk_test_/);}});
+test('all authored local page resources exist',async()=>{for(const page of pages){const html=await readFile(new URL(page,root),'utf8');for(const match of html.matchAll(/(?:src|href)="([^"#?]+)[^\"]*"/g)){const target=match[1];if(target.startsWith('/')||target.startsWith('http'))continue;assert.ok((await stat(new URL(target,root))).isFile(),`${page}: ${target}`);}}});
+test('all fixture artwork files exist and fit image budget',async()=>{const data=JSON.parse(await readFile(new URL('data/products.json',root)));for(const p of data.products){const file=await stat(new URL(p.image,root));assert.ok(file.size>0&&file.size<120000);}});
+test('HTML CSS and JS initial source bundle fits 30 KiB gzip budget',async()=>{const paths=['index.html','styles.css','store.js','catalog.js'];let bytes=0;for(const p of paths)bytes+=gzipSync(await readFile(new URL(p,root))).length;assert.ok(bytes<30*1024,`${bytes} bytes`);});
+test('hero candidates fit individual 200 KiB budget',async()=>{for(const size of [640,960,1440])assert.ok((await stat(new URL(`assets/products/studio-${size}.webp`,root))).size<200*1024);});
