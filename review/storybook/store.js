@@ -1,3 +1,4 @@
+import {createGallery} from './gallery.js';
 import {STATES,safeImage,safeCheckout,canBuy,priceLabel,validateCatalog} from './catalog.js';
 const catalog=document.querySelector('#catalog');
 const detail=document.querySelector('#product');
@@ -14,18 +15,19 @@ function renderCatalog(){
 function selectFilter(value){filter=value;for(const b of document.querySelectorAll('[data-filter]'))b.setAttribute('aria-pressed',String(b.dataset.filter===filter));renderCatalog();}
 function renderDetail(){
  const slug=new URLSearchParams(location.search).get('slug');const p=data.products.find(p=>p.slug===slug);detail.replaceChildren();
- if(!p){document.title='Little thing not found · SoftStrange Studio';detail.append(el('div','state-message','This little thing isn’t here. Use “Back to the little shop” to explore the collection.'));return;}
+ if(!p){document.title='Little thing not found · SoftStrange Studio';const missing=el('div','state-message');missing.append(el('h1','','A little lost?'),el('p','','This little thing isn’t here. Explore the collection using the link above.'));detail.append(missing);return;}
  document.title=`${p.name} · SoftStrange Studio`;document.querySelector('meta[name=description]').content=p.description;
- const layout=el('div','product-layout');const figure=el('figure');const img=productImage(p,true);img.classList.add('product-main-image');figure.append(img,el('figcaption','image-note',p.imageCredit||'Product artwork'));
- const copy=el('section','product-copy');copy.append(el('span','badge',STATES[p.status]),el('h1','',p.name),el('p','',p.description),el('p','product-price',p.approved?priceLabel(p):'Not for sale — concept preview'));
- const dl=el('dl');for(const [label,value]of [['Materials',p.materials],['Size',p.dimensions],['Shipping',p.shipping]])dl.append(el('dt','',label),el('dd','',value||'To be confirmed before launch'));copy.append(dl);
- if(canBuy(p,data.mode)){const buy=el('a','button checkout',`Buy with Stripe · ${priceLabel(p)}`);buy.href=safeCheckout(p.checkoutUrl);copy.append(buy);}else{const button=el('button','button checkout',p.status==='sold_out'?'This little thing has found a home':'Purchasing isn’t open yet');button.type='button';button.disabled=true;copy.append(button);}
- copy.append(el('p','small-note','This is a shop preview. No orders, reservations, or payments are being accepted.'));
+ const layout=el('div','product-layout');const figure=createGallery(p);
+ const copy=el('section','product-copy');copy.append(el('span','badge',STATES[p.status]),el('h1','',p.name),el('p','',p.description),el('p','product-price',p.approved?priceLabel(p):'A little idea, still taking shape.'));
+ const information=el('div','product-information');
+ for(const [title,body] of [['About this piece',p.approved?[p.materials,p.dimensions].filter(Boolean).join(' · '):'An imagined little companion. This is a concept study, not an item for sale.'],['Shipping & care',p.shipping||'Shipping and care details will be shared when the shop opens.']]){const accordion=el('details');accordion.append(el('summary','',title),el('p','',body));information.append(accordion);}copy.append(information);
+ if(canBuy(p,data.mode)){const buy=el('a','button checkout',`Buy with Stripe · ${priceLabel(p)}`);buy.href=safeCheckout(p.checkoutUrl);copy.append(buy);}else{const button=el('button','button checkout',p.status==='sold_out'?'This little thing has found a home':'Shop opening soon');button.type='button';button.disabled=true;copy.append(button);}
+
  const links=el('div','policy-links');for(const [text,href]of [['Shipping & care','shipping.html'],['Shop policies','policies.html']]){const a=el('a','',text);a.href=href;links.append(a);}copy.append(links);layout.append(figure,copy);detail.append(layout);
 }
 async function load(){
  const target=catalog||detail;if(!target)return;target.setAttribute('aria-busy','true');
- try{const response=await fetch(new URL('data/products.json',import.meta.url),{signal:AbortSignal.timeout(10000)});if(!response.ok)throw new Error('Catalog unavailable');data=validateCatalog(await response.json());catalog?renderCatalog():renderDetail();}
+ try{const response=await fetch(new URL('data/products.json',import.meta.url),{signal:AbortSignal.timeout(10000),cache:'no-cache'});if(!response.ok)throw new Error('Catalog unavailable');data=validateCatalog(await response.json());catalog?renderCatalog():renderDetail();}
  catch{target.replaceChildren();const message=el('div','state-message');message.append(el('h2','','A little pause'),el('p','','We couldn’t load the collection. Please try again.'));const retry=el('button','button','Try again');retry.type='button';retry.addEventListener('click',load);message.append(retry);target.append(message);}
  finally{target.setAttribute('aria-busy','false');}
 }
