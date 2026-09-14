@@ -1,12 +1,12 @@
 {
-  "status": "candidate_verified",
+  "status": "published_verified",
   "publicUrl": "https://softstrangestudio.github.io/SoftStrangeStore/",
   "startingRevision": "6895c9561807d0482f1d218550a8cef0de4db18b",
   "reviewedCandidate": "6233f984085f252a8eab6c521e23ebfcab98d939",
   "githubChanges": true,
   "livePaymentsEnabled": false,
   "browserReview": {
-    "route": "Existing authorized GitHub Pages review path; root promotion follows review",
+    "route": "Reviewed on existing authorized GitHub Pages staging path, then identical candidate files promoted to root. Live root and product smoke checks passed.",
     "attempts": 5,
     "accepted": [
       1,
@@ -38,5 +38,14 @@
     "command": "node --test tests/*.test.mjs",
     "passed": 15
   },
-  "rootDeployment": "pending promotion"
+  "rootDeployment": {
+    "status": "success",
+    "workflowRun": 34888868105,
+    "workflowUrl": "https://github.com/SoftStrangeStudio/SoftStrangeStore/actions/runs/34888868105",
+    "httpFileChecks": 11,
+    "allDeployedBytesMatch": true,
+    "evidence": "reviews/storybook/deployment-check.json"
+  },
+  "publishedCommit": "4a7222a8cd0090bd4956f0895a5884c5c5319523",
+  "verifiedAt": "2026-09-14T19:48:44.667049+00:00"
 }

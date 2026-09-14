@@ -4,7 +4,7 @@ A minimalist, cozy static concept storefront for SoftStrange Studio. Plain HTML,
 
 ## Status
 
-The storybook upgrade adds self-hosted Fraunces and DM Sans, transparent botanical artwork, paper frames, finite motion, thumbnail galleries, zoom, keyboard controls and expandable product information. The reviewed candidate is staged on the existing GitHub Pages deployment before promotion to the root storefront. See `REVIEW.md` and `reviews/storybook/run.json` for exact evidence and publication status.
+The storybook upgrade adds self-hosted Fraunces and DM Sans, transparent botanical artwork, paper frames, finite motion, thumbnail galleries, zoom, keyboard controls and expandable product information. The reviewed storefront is published at https://softstrangestudio.github.io/SoftStrangeStore/ in commit `4a7222a8`. GitHub Pages deployment and live root/product smoke checks passed. See `REVIEW.md` and `reviews/storybook/run.json` for exact evidence and publication status.
 
 All products remain unapproved sample concepts and purchasing is disabled. The AI concept images are not Angel’s actual inventory.
 

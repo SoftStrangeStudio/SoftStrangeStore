@@ -35,3 +35,9 @@ Purchasing remains disabled. No real inventory, prices, merchant configuration, 
 - Browser checks cover collection selection and empty-state reset, thumbnail changes, zoom, previous/next view, Escape, focus restoration and expandable information.
 - Transparent artwork was inspected against cream, sage and dark backgrounds without a chroma key.
 - Exact final deployment status is recorded in `validation.json` after the final smoke check.
+
+## Published result
+
+The reviewed site was promoted to the root storefront in commit `4a7222a8cd0090bd4956f0895a5884c5c5319523`. GitHub Pages run `34888868105` completed successfully. Eleven deployed HTML, CSS, JavaScript, JSON, artwork and font resources returned HTTP 200 and matched the published source bytes. All 15 source tests passed from a fresh clone of that commit. The live root catalog, filter/reset, product route, gallery availability and disabled purchase control were checked. The temporary staging copy was removed.
+
+Five attempts were used in this bounded run: 1, 2, 4 and 5 accepted; 3 revised before acceptance. Final desktop and mobile previews are in `reviews/storybook/`. This is evidence-backed completion of the current upgrade, not a claim of 50 historical iterations or a certification of live commerce readiness.

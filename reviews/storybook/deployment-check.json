@@ -1,0 +1,68 @@
+[
+  {
+    "path": "index.html",
+    "http": 200,
+    "matches": true,
+    "sha256": "918be415da7344cb171478c28180aae6821c31df20fd9728ad500a16e091e94e"
+  },
+  {
+    "path": "styles.css",
+    "http": 200,
+    "matches": true,
+    "sha256": "dd6bb9dc3db1f88c840a04a60897b77f7bb98fa8256da96c068dc401c5d7324e"
+  },
+  {
+    "path": "store.js",
+    "http": 200,
+    "matches": true,
+    "sha256": "d5ac011f1c5e53fc7946cff643dc308b799df770272a107cc76b97f9105b19b6"
+  },
+  {
+    "path": "gallery.js",
+    "http": 200,
+    "matches": true,
+    "sha256": "6ebecf1d89d382566eff3dad8541694246b4e3381cdd1affabb8c11a2bbe4291"
+  },
+  {
+    "path": "motion.js",
+    "http": 200,
+    "matches": true,
+    "sha256": "7b2d34e63e310222865c20f05c8e25bbc32c7718cb999b19f63a1d16d5675b01"
+  },
+  {
+    "path": "catalog.js",
+    "http": 200,
+    "matches": true,
+    "sha256": "5102829669c6fdbbdc77c2e760e115d9accbb06282f07a3c6045ac3ac9498808"
+  },
+  {
+    "path": "data/products.json",
+    "http": 200,
+    "matches": true,
+    "sha256": "17b082e30f736cefee30c20b4a6be761a4f30b207da41465d42b0747905fe844"
+  },
+  {
+    "path": "assets/illustrations/botanical-left.webp",
+    "http": 200,
+    "matches": true,
+    "sha256": "4a7e7608080a039d294d4bab16da4030480a807cfc1fa04a98fc2a5f653d6687"
+  },
+  {
+    "path": "assets/illustrations/botanical-right.webp",
+    "http": 200,
+    "matches": true,
+    "sha256": "032eeb8966357e767c057fbac4fc638dc67d9d147a7b7c036f39d9d4e5747409"
+  },
+  {
+    "path": "assets/fonts/fraunces.woff2",
+    "http": 200,
+    "matches": true,
+    "sha256": "b9c807b6624c07f2c5dcb178b075facc62fd2f6b3c4cb33ddc8c589a32105e14"
+  },
+  {
+    "path": "product.html",
+    "http": 200,
+    "matches": true,
+    "sha256": "e7ccf77c06d0eee571862bf2a4dd859f994f081e14606e1e6841b13c02ca9235"
+  }
+]
