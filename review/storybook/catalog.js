@@ -11,6 +11,7 @@ export function validateCatalog(data){
   if(typeof p.name!=='string'||!p.name.trim()||typeof p.description!=='string'||!Object.hasOwn(STATES,p.status)||typeof p.approved!=='boolean'||!['companions','paper'].includes(p.category)||typeof p.alt!=='string'||!p.alt.trim())throw new Error('Invalid product content');
   if(p.priceMinor!==null&&(!Number.isSafeInteger(p.priceMinor)||p.priceMinor<0))throw new Error('Invalid price');
   if(typeof p.currency!=='string'||!/^[A-Z]{3}$/.test(p.currency)||!Array.isArray(p.gallery))throw new Error('Invalid product metadata');
+  if(p.imageScale!==undefined&&(!Number.isFinite(p.imageScale)||p.imageScale<1||p.imageScale>1.5))throw new Error('Invalid image framing');
   for(const view of p.gallery)if(!view||typeof view.image!=='string'||safeImage(view.image)!==view.image||typeof view.alt!=='string'||!view.alt.trim()||typeof view.label!=='string'||!view.label.trim())throw new Error('Invalid gallery view');
   for(const key of ['materials','dimensions','shipping','checkoutUrl'])if(p[key]!==null&&typeof p[key]!=='string')throw new Error('Invalid product details');
   ids.add(p.id);slugs.add(p.slug);

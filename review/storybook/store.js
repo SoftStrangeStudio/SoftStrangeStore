@@ -1,11 +1,11 @@
-import {motionIsReduced,revealCards,observeSections} from './motion.js?v=storybook-3';
-import {createGallery} from './gallery.js?v=storybook-3';
-import {STATES,safeImage,safeCheckout,canBuy,priceLabel,validateCatalog} from './catalog.js?v=storybook-3';
+import {revealCards,observeSections} from './motion.js?v=storybook-4';
+import {createGallery} from './gallery.js?v=storybook-4';
+import {STATES,safeImage,safeCheckout,canBuy,priceLabel,validateCatalog} from './catalog.js?v=storybook-4';
 const catalog=document.querySelector('#catalog');
 const detail=document.querySelector('#product');
-let data,filter='all',filterRevision=0,filterTransition;
+let data,filter='all';
 const el=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
-function productImage(p,eager=false){const img=el('img','soft-image');img.alt=p.alt;img.width=640;img.height=640;img.loading=eager?'eager':'lazy';img.decoding='async';img.addEventListener('load',()=>img.classList.add('is-loaded'),{once:true});img.addEventListener('error',()=>{img.classList.add('is-loaded');img.src='assets/brand/flower.svg';img.alt='Artwork is not available yet';},{once:true});img.src=safeImage(p.image);if(img.complete&&img.naturalWidth)img.classList.add('is-loaded');return img;}
+function productImage(p,eager=false){const img=el('img','soft-image');img.alt=p.alt;img.width=640;img.height=640;img.loading=eager?'eager':'lazy';img.decoding='async';img.addEventListener('load',()=>img.classList.add('is-loaded'),{once:true});img.addEventListener('error',()=>{img.classList.add('is-loaded');img.src='assets/brand/flower.svg';img.alt='Artwork is not available yet';},{once:true});if(p.imageScale)img.style.setProperty('--image-scale',String(p.imageScale));img.src=safeImage(p.image);if(img.complete&&img.naturalWidth)img.classList.add('is-loaded');return img;}
 function renderCatalog(){
  const products=data.products.filter(p=>filter==='all'||p.category===filter);
  catalog.replaceChildren();
@@ -15,13 +15,12 @@ function renderCatalog(){
 }
 function selectFilter(value){
  if(value===filter)return;
- const restoreFocus=catalog.contains(document.activeElement),revision=++filterRevision;
+ const restoreFocus=catalog.contains(document.activeElement);
  filter=value;for(const b of document.querySelectorAll('[data-filter]'))b.setAttribute('aria-pressed',String(b.dataset.filter===filter));
- filterTransition?.skipTransition();
- const update=()=>{if(revision!==filterRevision)return;renderCatalog();if(restoreFocus)document.querySelector(`[data-filter="${filter}"]`).focus({preventScroll:true});};
- if(!motionIsReduced()&&document.startViewTransition){filterTransition=document.startViewTransition(update);filterTransition.finished.catch(()=>{});}
- else{update();revealCards(catalog);}
+ renderCatalog();revealCards(catalog);
+ if(restoreFocus)document.querySelector(`[data-filter="${filter}"]`).focus({preventScroll:true});
 }
+
 function renderDetail(){
  const slug=new URLSearchParams(location.search).get('slug');const p=data.products.find(p=>p.slug===slug);detail.replaceChildren();
  if(!p){document.title='Little thing not found · SoftStrange Studio';const missing=el('div','state-message');missing.append(el('h1','','A little lost?'),el('p','','This little thing isn’t here. Explore the collection using the link above.'));detail.append(missing);return;}

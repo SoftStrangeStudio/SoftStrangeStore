@@ -52,7 +52,8 @@
       "dimensions": null,
       "shipping": null,
       "checkoutUrl": null,
-      "imageCredit": "AI-generated concept artwork. Not a photograph of Angel’s work."
+      "imageCredit": "AI-generated concept artwork. Not a photograph of Angel’s work.",
+      "imageScale": 1.29
     },
     {
       "id": "concept-003",

@@ -1,5 +1,5 @@
-import {motionIsReduced} from './motion.js?v=storybook-3';
-import {safeImage} from './catalog.js?v=storybook-3';
+import {motionIsReduced} from './motion.js?v=storybook-4';
+import {safeImage} from './catalog.js?v=storybook-4';
 const element=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;};
 export function createGallery(product){
   const items=[{image:product.image,alt:product.alt,label:'Portrait'},...product.gallery];
@@ -31,7 +31,7 @@ export function createGallery(product){
   dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');setZoom(false);open.focus({preventScroll:true});});
   dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
   previous.addEventListener('click',()=>select(index-1));next.addEventListener('click',()=>select(index+1));zoom.addEventListener('click',()=>setZoom(!zoomed));
-  function keyboard(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();select(index+(e.key==='ArrowRight'?1:-1));}}
+  function keyboard(e){if(zoomed&&e.target===canvas)return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();select(index+(e.key==='ArrowRight'?1:-1));}}
   dialog.addEventListener('keydown',keyboard);open.addEventListener('keydown',keyboard);
   thumbs.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){keyboard(e);thumbButtons[index].focus();}});
   let touch=null;
