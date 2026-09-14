@@ -1,4 +1,5 @@
-import {safeImage} from './catalog.js';
+import {motionIsReduced} from './motion.js?v=storybook-3';
+import {safeImage} from './catalog.js?v=storybook-3';
 const element=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;};
 export function createGallery(product){
   const items=[{image:product.image,alt:product.alt,label:'Portrait'},...product.gallery];
@@ -23,7 +24,7 @@ export function createGallery(product){
   const zoom=element('button','zoom-button','Zoom in');zoom.type='button';zoom.setAttribute('aria-pressed','false');
   controls.append(previous,modalCount,next,zoom);dialog.append(heading,close,canvas,controls);figure.append(dialog);
   function setZoom(value){zoomed=value;dialog.classList.toggle('is-zoomed',value);zoom.textContent=value?'Zoom out':'Zoom in';zoom.setAttribute('aria-pressed',String(value));canvas.scrollTo(0,0);}
-  function setImage(img,item){img.alt=item.alt;img.src=safeImage(item.image);img.onerror=()=>{img.onerror=null;img.src='assets/brand/flower.svg';img.alt='Artwork is unavailable';};}
+  function setImage(img,item){img.onload=()=>{if(!motionIsReduced()&&img.animate)img.animate([{opacity:.35},{opacity:1}],{duration:220,easing:'ease-out'});};img.alt=item.alt;img.src=safeImage(item.image);img.onerror=()=>{img.onerror=null;img.src='assets/brand/flower.svg';img.alt='Artwork is unavailable';};}
   function select(value){index=(value+items.length)%items.length;const item=items[index];setImage(main,item);if(dialog.open)setImage(enlarged,item);for(const [i,b] of thumbButtons.entries())b.setAttribute('aria-pressed',String(i===index));count.textContent=`${index+1} / ${items.length} · ${item.label}`;modalCount.textContent=count.textContent;setZoom(false);}
   open.addEventListener('click',()=>{setImage(enlarged,items[index]);dialog.showModal();document.body.classList.add('dialog-open');});
   close.addEventListener('click',()=>dialog.close());
