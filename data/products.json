@@ -3,83 +3,31 @@
   "mode": "preview",
   "products": [
     {
-      "id": "concept-001",
-      "slug": "moss-little-companion",
-      "name": "Moss, the quiet friend",
-      "category": "companions",
-      "categoryLabel": "LITTLE COMPANIONS",
-      "description": "A soft green daydream for a quiet corner. An imagined companion with a curious face and room for all your feelings.",
-      "status": "preview",
+      "id": "bee-001",
+      "slug": "crochet-bee",
+      "name": "Crochet bee",
+      "category": "bees",
+      "categoryLabel": "HANDMADE CROCHET",
+      "description": "A little handmade bee from Angel at SoftStrange Studio. Photographs and details are coming soon.",
+      "status": "preparing",
       "approved": false,
       "priceMinor": null,
       "currency": "USD",
-      "image": "assets/products/moss-640.webp",
-      "alt": "AI concept of a sage-green clay creature with rounded ears and kind eyes.",
-      "gallery": [
-        {
-          "image": "assets/products/studio-1440.webp",
-          "alt": "Original AI concept scene showing Moss, the peach mushroom and the butter-yellow companion together.",
-          "label": "Together"
-        }
-      ],
+      "image": "assets/products/bee-placeholder.svg",
+      "alt": "Flower placeholder; crochet bee photographs are coming soon.",
+      "gallery": [],
       "materials": null,
       "dimensions": null,
       "shipping": null,
       "checkoutUrl": null,
-      "imageCredit": "AI-generated concept artwork. Not a photograph of Angel’s work."
-    },
-    {
-      "id": "concept-002",
-      "slug": "peach-mushroom-friend",
-      "name": "A pocket of wonder",
-      "category": "companions",
-      "categoryLabel": "LITTLE COMPANIONS",
-      "description": "A tiny mushroom-shaped possibility, full of peachy warmth. This sample explores a gentle, whimsical direction for the future shop.",
-      "status": "preview",
-      "approved": false,
-      "priceMinor": null,
-      "currency": "USD",
-      "image": "assets/products/peach-640.webp",
-      "alt": "AI concept of a small peach mushroom creature sitting in warm light.",
-      "gallery": [
-        {
-          "image": "assets/products/studio-1440.webp",
-          "alt": "Original AI concept scene showing Moss, the peach mushroom and the butter-yellow companion together.",
-          "label": "Together"
-        }
-      ],
-      "materials": null,
-      "dimensions": null,
-      "shipping": null,
-      "checkoutUrl": null,
-      "imageCredit": "AI-generated concept artwork. Not a photograph of Angel’s work.",
-      "imageScale": 1.29
-    },
-    {
-      "id": "concept-003",
-      "slug": "buttercup-daydream",
-      "name": "A little sunshine",
-      "category": "companions",
-      "categoryLabel": "LITTLE COMPANIONS",
-      "description": "A butter-yellow daydream wearing a tiny flower. An imagined friend for the days that could use a little light.",
-      "status": "preview",
-      "approved": false,
-      "priceMinor": null,
-      "currency": "USD",
-      "image": "assets/products/buttercup-640.webp",
-      "alt": "AI concept of a round yellow clay creature with a white flower on its head.",
-      "gallery": [
-        {
-          "image": "assets/products/studio-1440.webp",
-          "alt": "Original AI concept scene showing Moss, the peach mushroom and the butter-yellow companion together.",
-          "label": "Together"
-        }
-      ],
-      "materials": null,
-      "dimensions": null,
-      "shipping": null,
-      "checkoutUrl": null,
-      "imageCredit": "AI-generated concept artwork. Not a photograph of Angel’s work."
+      "imageCredit": "Product photographs coming soon",
+      "stock": null,
+      "fulfillment": null,
+      "care": null,
+      "safety": null,
+      "color": null,
+      "photosApproved": false,
+      "inventoryVerified": false
     }
   ]
 }

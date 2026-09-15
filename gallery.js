@@ -1,5 +1,5 @@
-import {motionIsReduced} from './motion.js?v=storybook-5';
-import {safeImage} from './catalog.js?v=storybook-5';
+import {motionIsReduced} from './motion.js?v=bees-1';
+import {safeImage} from './catalog.js?v=bees-1';
 const element=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;};
 export function createGallery(product){
   const items=[{image:product.image,alt:product.alt,label:'Portrait'},...product.gallery];

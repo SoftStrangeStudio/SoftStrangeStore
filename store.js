@@ -1,6 +1,6 @@
-import {revealCards,observeSections} from './motion.js?v=storybook-5';
-import {createGallery} from './gallery.js?v=storybook-5';
-import {STATES,safeImage,safeCheckout,canBuy,priceLabel,validateCatalog} from './catalog.js?v=storybook-5';
+import {revealCards,observeSections} from './motion.js?v=bees-1';
+import {createGallery} from './gallery.js?v=bees-1';
+import {STATES,safeImage,safeCheckout,canBuy,priceLabel,validateCatalog} from './catalog.js?v=bees-1';
 const catalog=document.querySelector('#catalog');
 const detail=document.querySelector('#product');
 let data,filter='all';
@@ -9,9 +9,9 @@ function productImage(p,eager=false){const img=el('img','soft-image');img.alt=p.
 function renderCatalog(){
  const products=data.products.filter(p=>filter==='all'||p.category===filter);
  catalog.replaceChildren();
- for(const p of products){const article=el('article','product-card');const a=el('a');a.href=`product.html?slug=${encodeURIComponent(p.slug)}`;const visual=el('div','card-image');const viewport=el('div','image-viewport');viewport.append(productImage(p));const cue=el('span','card-cue','Take a closer look ↗');cue.setAttribute('aria-hidden','true');visual.append(viewport,el('span','badge',STATES[p.status]),cue);const info=el('div','card-details');info.append(el('p','card-category',p.categoryLabel||'LITTLE THINGS'));const heading=el('div','card-heading');heading.append(el('h3','',p.name));const arrow=el('span','','↗');arrow.setAttribute('aria-hidden','true');heading.append(arrow);info.append(heading,el('p','',p.approved?priceLabel(p):'A little idea · coming soon'));a.append(visual,info);article.append(a);catalog.append(article);}
- if(!products.length){const empty=el('div','state-message');empty.append(el('h3','','A little room for something new'),el('p','','No concepts in this collection just yet.'));if(filter!=='all'){const reset=el('button','button','See all little things');reset.type='button';reset.addEventListener('click',()=>selectFilter('all'));empty.append(reset);}catalog.append(empty);}
- catalog.setAttribute('aria-busy','false');document.querySelector('#result-count').textContent=`${products.length} ${products.length===1?'concept':'concepts'}`;
+ for(const p of products){const article=el('article','product-card');const a=el('a');a.href=`product.html?slug=${encodeURIComponent(p.slug)}`;const visual=el('div','card-image');const viewport=el('div','image-viewport');viewport.append(productImage(p));const cue=el('span','card-cue','Take a closer look ↗');cue.setAttribute('aria-hidden','true');visual.append(viewport,el('span','badge',STATES[p.status]),cue);const info=el('div','card-details');info.append(el('p','card-category',p.categoryLabel||'LITTLE THINGS'));const heading=el('div','card-heading');heading.append(el('h3','',p.name));const arrow=el('span','','↗');arrow.setAttribute('aria-hidden','true');heading.append(arrow);if(p.approved && p.fulfillment)info.append(el('p','fulfillment',p.fulfillment==='ready_to_ship'?'Ready to ship':'Made to order'));info.append(heading,el('p','',p.approved?priceLabel(p):'Details coming soon'));a.append(visual,info);article.append(a);catalog.append(article);}
+ if(!products.length){const empty=el('div','state-message');empty.append(el('h3','','A little room for something new'),el('p','','The bees are on their way. Please check back soon.'));if(filter!=='all'){const reset=el('button','button','See all little things');reset.type='button';reset.addEventListener('click',()=>selectFilter('all'));empty.append(reset);}catalog.append(empty);}
+ catalog.setAttribute('aria-busy','false');document.querySelector('#result-count').textContent=`${products.length} ${products.length===1?'bee':'bees'}`;
 }
 function selectFilter(value){
  if(value===filter)return;
@@ -26,10 +26,10 @@ function renderDetail(){
  if(!p){document.title='Little thing not found · SoftStrange Studio';const missing=el('div','state-message');missing.append(el('h1','','A little lost?'),el('p','','This little thing isn’t here. Explore the collection using the link above.'));detail.append(missing);return;}
  document.title=`${p.name} · SoftStrange Studio`;document.querySelector('meta[name=description]').content=p.description;
  const layout=el('div','product-layout');const figure=createGallery(p);
- const copy=el('section','product-copy');copy.append(el('span','badge',STATES[p.status]),el('h1','',p.name),el('p','',p.description),el('p','product-price',p.approved?priceLabel(p):'A little idea, still taking shape.'));
+ const copy=el('section','product-copy');copy.append(el('span','badge',STATES[p.status]),el('h1','',p.name),el('p','',p.description),el('p','product-price',p.approved?priceLabel(p):'Price coming soon'));
  const information=el('div','product-information');
- for(const [title,body] of [['About this piece',p.approved?[p.materials,p.dimensions].filter(Boolean).join(' · '):'An imagined little companion. This is a concept study, not an item for sale.'],['Shipping & care',p.shipping||'Shipping and care details will be shared when the shop opens.']]){const accordion=el('details');accordion.append(el('summary','',title),el('p','',body));information.append(accordion);}copy.append(information);
- if(canBuy(p,data.mode)){const buy=el('a','button checkout',`Buy with Stripe · ${priceLabel(p)}`);buy.href=safeCheckout(p.checkoutUrl);copy.append(buy);}else{const button=el('button','button checkout',p.status==='sold_out'?'This little thing has found a home':'Shop opening soon');button.type='button';button.disabled=true;copy.append(button);}
+ for(const [title,body] of [['About this piece',p.approved?[p.materials,p.dimensions].filter(Boolean).join(' · '):'Handmade crochet by Angel. Full product details will be added before orders open.'],['Materials & size',[p.materials,p.dimensions,p.color].filter(Boolean).join(' · ')||'Details coming soon.'],['Care',p.care||'Care instructions coming soon.'],['Product suitability',p.safety||'Product suitability details will be confirmed before orders open.'],['Shipping',p.shipping||'Shipping details will be shared when the shop opens.']]){const accordion=el('details');accordion.append(el('summary','',title),el('p','',body));information.append(accordion);}copy.append(information);
+ if(canBuy(p,data.mode)){const buy=el('a','button checkout',`Buy this bee · ${priceLabel(p)}`);buy.href=safeCheckout(p.checkoutUrl);copy.append(buy);}else{const button=el('button','button checkout',p.status==='sold_out'?'This little thing has found a home':'Bees coming soon');button.type='button';button.disabled=true;copy.append(button);}
 
  const links=el('div','policy-links');for(const [text,href]of [['Shipping & care','shipping.html'],['Shop policies','policies.html']]){const a=el('a','',text);a.href=href;links.append(a);}copy.append(links);layout.append(figure,copy);detail.append(layout);
 }

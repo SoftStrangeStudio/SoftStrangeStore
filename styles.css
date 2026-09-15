@@ -34,3 +34,6 @@ html{scroll-behavior:smooth;scroll-padding-top:24px}body{background:var(--paper)
 @media(max-width:360px){.brand{font-size:1.16rem;gap:6px}.brand img{width:22px;height:22px}.site-header{gap:12px}.site-header nav{gap:12px;font-size:.7rem}.hero{padding-top:34px}.hero .eyebrow{letter-spacing:.1em}.filters{gap:3px}.filters button{padding-inline:10px;font-size:.75rem}}
 
 .filters button:disabled{opacity:.55;cursor:wait}
+
+/* Crochet bee collection */
+.bee-placeholder{min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f5ecd8;color:#71533c;text-align:center;padding:40px}.bee-placeholder>span{font-size:84px;color:#b48b32}.bee-placeholder p{font-family:Fraunces,Georgia,serif;font-size:clamp(26px,4vw,44px);line-height:1.2}.bee-placeholder small{font-size:14px}.fulfillment{color:#556546;font-weight:600}@media(max-width:480px){.bee-placeholder{min-height:270px;padding:24px}}
